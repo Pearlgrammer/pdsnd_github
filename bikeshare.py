@@ -25,14 +25,14 @@ def get_filters():
             print("Oops! Invalid Input...")
 
     # TO DO: get user input for month (all, january, february, ... , june)
-    months = ["jan", "feb", "mar", "apr", "may", "jun", "all"]
+    months = ["january", "february", "march", "april", "may", "june", "all"]
     while True:
         month = input("Please, pick a month (jan, feb, mar, apr, may, jun) to filter or type (all) for not filtering:\n").lower()
         if month in months:
               break
         else:
             print("Oops! Invalid Input...")
-          
+
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     days = ["sat", "sun", "mon", "tus", "wen", "thu", "fri", "all"]
@@ -42,8 +42,8 @@ def get_filters():
             break
         else:
             print("Oops! Invalid Input..")
-    return city, month, day              
-  
+    return city, month, day
+
     print('-'*40)
     return city, month, day
 
@@ -62,19 +62,19 @@ def load_data(city, month, day):
 
     #data file as a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    
+
     #converting (Start Time) column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     #extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month_name()
     df['day_of_week'] = df['Start Time'].dt.day_name()
-    
+
     #filter by month if applicable
     if month != 'all':
         #filter by month to create the new dataframe
         df = df[df['month'].str.startswith(month.title())]
-        
+
     #filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
@@ -91,14 +91,14 @@ def time_stats(df):
 
     # TO DO: display the most common month
     df['month'] = df['Start Time'].dt.month_name()
-    most_common_month = df['month'].mode()[0]          
+    most_common_month = df['month'].mode()[0]
     print("Most common month is ", most_common_month)
-    
+
     # TO DO: display the most common day of week
     df['day_of_week'] = df['Start Time'].dt.day_name()
     most_common_day = df['day_of_week'].mode()[0]
-    print("Most common month is ", most_common_month)          
-   
+    print("Most common month is ", most_common_month)
+
     # TO DO: display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     most_common_hour = df['hour'].mode()[0]
@@ -140,11 +140,11 @@ def trip_duration_stats(df):
     # TO DO: display total travel time
     total_trip_duration = df['Trip Duration'].sum()
     print('Total travel time is', total_trip_duration)
-              
+
     # TO DO: display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
     print('Mean travel time is', mean_travel_time)
-              
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -158,7 +158,7 @@ def user_stats(df):
     # TO DO: Display counts of user types
     user_types = df['User Type'].value_counts().to_frame()
     print('Here are user types:\n', user_types)
-    
+
     # TO DO: Display counts of gender
     try:
         print("Gender is\n", df['Gender'].value_counts())
@@ -179,7 +179,7 @@ def ask_more_data(df):
         print(df.iloc[0:5])
         start_loc += 5
         more_data = input("Do you wish to continue? Enter yes or no ").lower()
-              
+
     return df
 
 def main():
