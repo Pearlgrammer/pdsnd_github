@@ -18,4 +18,7 @@ Thank you Udacity for this amazing course!
 ### Comments
 This project is so cool! I feel like I'm doin something! It's super easy to understand!
 
+### please rate this project!
+you can rate with one star, two, three, four, or five stars!
+
 
