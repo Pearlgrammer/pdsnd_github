@@ -14,3 +14,8 @@ bikeshare.py file, and the .gitignore file
 
 ### Credits
 Thank you Udacity for this amazing course!
+
+### Comments
+This project is so cool! I feel like I'm doin something! It's super easy to understand!
+
+
